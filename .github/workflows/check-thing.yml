@@ -24,9 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       # run migration validation bash script
       - name: Check Migrations
-        run: .github/check-migration-conflicts.sh
-          web/app/migrations
-          .github/migrations_whitelist
+        run: .github/script.sh
 
   # if_merged:
   #   runs-on: ubuntu-latest
