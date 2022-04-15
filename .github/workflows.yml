@@ -1,13 +1,13 @@
-name: Check for Django Migration Conflicts
+name: Run a script
 on:
   # run for every push to master
   push:
     branches:
-      - master
+      - main
   # run for every PR targeted at master
   pull_request:
     branches:
-      - master
+      - main
 
   # pull_request_target:
   #   branches:
