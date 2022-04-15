@@ -23,17 +23,15 @@ jobs:
       # copy code from repo into container
       - uses: actions/checkout@v2
       # run migration validation bash script
-      - name: Check Migrations
-        run: .github/script.sh
+      - name: Do Thing
+        run: .github/scripts/script.sh
 
-  # if_merged:
-  #   runs-on: ubuntu-latest
-  #   if: github.event.pull_request.merged == 'true'
-  #   steps:
-  #     # copy code from repo into container
-  #     - uses: actions/checkout@v2
-  #     # run migration validation bash script
-  #     - name: Check Migrations
-  #       run: .github/check-migration-conflicts.sh
-  #         web/app/migrations
-  #         .github/migrations_whitelist
+  if_merged:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == 'true'
+    steps:
+      # copy code from repo into container
+      - uses: actions/checkout@v2
+      # run migration validation bash script
+      - name: Do Thing
+        run: .github/scripts/script.sh
