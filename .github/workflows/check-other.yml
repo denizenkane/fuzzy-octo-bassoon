@@ -1,7 +1,7 @@
 name: Check Migrations Again
 on:
   # run for every push to master
-  pull_request_target:
+  pull_request:
     types:
       - closed
 
