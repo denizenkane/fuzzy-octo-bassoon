@@ -1,21 +1,17 @@
-name: Run a script
+name: Check Migrations Again
 on:
   # run for every push to master
-  push:
-    branches:
-      - main
-  # run for every PR targeted at master
-  pull_request:
-    branches:
-      - main
+  pull_request_target:
+    types:
+      - closed
 
 jobs:
-  check:
+  if_merged:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.merged == true
     steps:
       # copy code from repo into container
       - uses: actions/checkout@v2
       # run migration validation bash script
       - name: Do Thing
-        run: echo "normal"
+        run: echo "on merge"
