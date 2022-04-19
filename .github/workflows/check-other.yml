@@ -3,6 +3,10 @@ on:
   pull_request_review:
     types: [submitted]
 
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+
 jobs:
   approved:
     if: github.event.review.state == 'approved'
@@ -12,4 +16,17 @@ jobs:
       - uses: actions/checkout@v2
       # run migration validation bash script
       - name: Do Thing
-        run: if [ -f conflict.py ]; then echo "conflict" exit 1; fi
+        run: if [ -f conflict.py ]; then echo "conflict"; exit 1; fi
+
+  on_merge:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+    # copy code from repo into container
+    - uses: actions/checkout@v2
+    # run migration validation bash script
+    - name: Do Thing
+      run: if [ -f conflict.py ]; then echo "conflict"; exit 1; fi
+
+
+
