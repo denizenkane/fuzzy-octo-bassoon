@@ -1,7 +1,7 @@
 name: Check Migrations Again
 on:
   # run for every push to master
-  pull_request:
+  pull_request_target:
     types:
       - closed
 
@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v2
       # run migration validation bash script
       - name: Do Thing
-        run: echo "on merge"
+        run: if [ -f conflict.py ]; then echo "conflict" exit 1; fi
