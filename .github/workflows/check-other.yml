@@ -1,14 +1,14 @@
 name: Check Migrations Again
 on:
   # run for every push to master
-  pull_request_target:
-    types:
-      - closed
+  push:
+    branches:
+      - master
 
 jobs:
   if_merged:
+    if: github.event.pull_request.merged
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     steps:
       # copy code from repo into container
       - uses: actions/checkout@v2
