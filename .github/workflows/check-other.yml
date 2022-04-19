@@ -1,13 +1,11 @@
 name: Check Migrations Again
 on:
-  # run for every push to master
-  push:
-    branches:
-      - master
+  pull_request_review:
+    types: [submitted]
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged
+  approved:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       # copy code from repo into container
