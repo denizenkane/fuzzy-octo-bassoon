@@ -8,7 +8,6 @@ on:
 jobs:
   if_merged:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     steps:
       # copy code from repo into container
       - uses: actions/checkout@v2
